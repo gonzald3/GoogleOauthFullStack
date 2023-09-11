@@ -1,7 +1,12 @@
 //common js for sever because the code is older
 const express = require('express');
+const mongoose = require('mongoose');
+const keys = require('./config/keys');
+require('./models/User');
+//order does matter for Users model and access of database
 require('./services/passport');
 
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 
