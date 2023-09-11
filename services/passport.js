@@ -8,6 +8,18 @@ const keys = require('../config/keys.js');
 //User object is model class
 const User = mongoose.model('users');
 
+//for loading into cookies
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+    User.findById(id)
+        .then(user => {
+            done(null, user);
+        })
+});
+
 // console.developers.google.com
 passport.use(
     new GoogleStrategy({
@@ -21,6 +33,8 @@ passport.use(
             .then((existingUser) => {
                 if(existingUser){
                     //we already have a record with the given profile ID
+                    done(null, existingUser);
+
                 }else{
                     //we don't have a user record with this ID, make a new record
                     //get access to mongoose model inside this file
@@ -28,9 +42,11 @@ passport.use(
                     //create a new instance of a User
                     new User({
                         googleId: profile.id
-                    }).save();
+                    })
+                        .save()
+                        .then(user => done(null, user));
                 }
-            });
+            })
         
 
         }
