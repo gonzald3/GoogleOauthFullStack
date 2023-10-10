@@ -35,6 +35,8 @@ passport.use(
             if(existingUser){
                 //we already have a record with the given profile ID
                 return done(null, existingUser);
+                //Hi dude
+        
 
             }
                 //we don't have a user record with this ID, make a new record
