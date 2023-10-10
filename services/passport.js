@@ -30,6 +30,7 @@ passport.use(
     }, 
     async (accessToken, refreshToken, profile, done) => {
         //this does not return a user directly but a promise
+        console.log(profile);
         const existingUser = await User.findOne({ googleId: profile.id})
             if(existingUser){
                 //we already have a record with the given profile ID
