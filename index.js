@@ -35,8 +35,6 @@ if(process.env.NODE_ENV === 'production'){
     //like our main.js faile, or main.css file!
     app.use(express.static('client/build'));
 
-
-
     //Express will serve up the index.html file
     //if it doesn't recgnize the route
     const path = require('path');
@@ -44,7 +42,7 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html' ));
     })
 
-    
+
 
 }
 
