@@ -1,16 +1,12 @@
 const keys = require('../config/keys');
 const stripe = require('stripe')(keys.stripeSecretKey);
+const requireLogin = require('../middlewares/requireLogin');
 
 //Note: Use a test payment such as 4242 4242 4242 4242
 // 12/34      CVC: 567
 
 module.exports = app => {
-    app.post('/api/stripe', async (req, res) => {
-
-        if(!req.user){
-            return res.status(401).send({ error: 'You must log in! '});
-        }
-
+    app.post('/api/stripe', requireLogin, async (req, res) => {
 
 
         const charge = await stripe.charges.create({
