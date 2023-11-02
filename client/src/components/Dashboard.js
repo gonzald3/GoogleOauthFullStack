@@ -36,6 +36,12 @@ class Dashboard extends Component {
 
                 <div >
                     <h1>Dashboard</h1>
+                    <p>Feel Free to add credits to your account using the stripe demo.</p>
+                    <p>When testing interactively, use a card number, such as 4242 4242 4242 4242. Enter the card number in the Dashboard or in any payment form.
+                        <li>Use a valid future date, such as 12/34.</li>
+                        <li>Use any three-digit CVC </li>
+                        <li>Use any value you like for other form fields.</li>
+                    </p>
                     <ul className="right">
                         {this.renderContent()}
 
