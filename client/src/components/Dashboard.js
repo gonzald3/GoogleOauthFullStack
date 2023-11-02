@@ -14,6 +14,7 @@ class Dashboard extends Component {
                 return <li><a href="/auth/google">Login with Google</a></li>;
             default:
                 return [
+                    <li><img src={this.props.auth.photo} alt="" class="circle responsive-img"></img></li>,
                     <li key="4" style={{ margin: '0 10px'}}>Hi {this.props.auth.name} </li>,
                     <li key="4" style={{ margin: '0 10px'}}>Email: {this.props.auth.email} </li>,
                     <li key="3" style={{ margin: '0 10px'}}>
