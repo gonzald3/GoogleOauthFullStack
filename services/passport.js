@@ -32,7 +32,7 @@ passport.use(
         //this does not return a user directly but a promise
         console.log(profile.emails[0].value);
         console.log(profile.photos[0].value);
-        const existingUser = await User.findOne({ googleId: profile.id, name: profile.displayName, email: profile.emails[0].value })
+        const existingUser = await User.findOne({ googleId: profile.id, name: profile.displayName, email: profile.emails[0].value, photo: profile.photos[0].value })
             if(existingUser){
                 //we already have a record with the given profile ID
                 return done(null, existingUser);
@@ -44,7 +44,7 @@ passport.use(
                 //get access to mongoose model inside this file
                 //console.log('profile', profile);
                 //create a new instance of a User
-                const user = await new User({ googleId: profile.id, name: profile.displayName, email: profile.emails[0].value }).save();
+                const user = await new User({ googleId: profile.id, name: profile.displayName, email: profile.emails[0].value, photo: profile.photos[0].value }).save();
                 done(null, user);
         
 

@@ -8,7 +8,8 @@ const userSchema = new Schema({
     googleId: String,
     name: String,
     credits: { type: Number, default: 0 },
-    email: String
+    email: String,
+    photo: String
 
 });
 
