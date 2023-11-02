@@ -13,6 +13,7 @@ class Header extends Component {
             default:
                 return [
                     <li key="1"><Payments /></li>,
+                    <li style={{ margin: '0 10px'}}>Hi {this.props.auth.name} </li>,
                     <li key="3" style={{ margin: '0 10px'}}>
                         Credits: {this.props.auth.credits}
                     </li>,
@@ -27,13 +28,14 @@ class Header extends Component {
 
     render() {
         console.log(this.props)
+        //const name = this.props.
         return(
             <nav>
                 <div className="nav-wrapper">
                     <Link 
                         to={this.props.auth ? '/surveys' : '/'}
                         className="left brand-logo">
-                        Emaily
+                        Emaily 
                     </Link>
                     <ul className="right">
                         {this.renderContent()}
